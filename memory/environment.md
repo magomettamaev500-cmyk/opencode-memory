@@ -16,12 +16,17 @@
 | --------------- | --------------------- | ------------------------------------------- |
 | node            | v24.21.0              | `C:\Program Files\nodejs\node.exe`          |
 | git             | 2.55.0.windows.5      | `C:\Program Files\Git\cmd\git.exe`          |
-| gh (GitHub CLI) | ставится              | `C:\Program Files\GitHub CLI\gh.exe`        |
+| gh (GitHub CLI) | 2.102.1               | `C:\Program Files\GitHub CLI\gh.exe`        |
 | winget          | —                     | `%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe` |
 
 - `git` и `gh` **не были** установлены в системе изначально — поставлены
   2026-10-21 через `winget`.
-- Глобального `~/.gitconfig` изначально не было; сейчас создаётся `gh auth setup-git`.
+- Авторизация GitHub: `gh auth login --web`, токен в системном хранилище
+  (keyring), scope `repo`. Учётка — `magomettamaev500-cmyk`.
+- `~/.gitconfig` создан через `gh auth setup-git` — git пушит через
+  credential helper, токен в открытом виде не хранится.
+- `chcp 65001` в PowerShell: без этого кириллица из внешних команд
+  выводится как мусор.
 
 ## OpenCode
 

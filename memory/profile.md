@@ -5,8 +5,10 @@
 ## Идентификация
 
 - Локальный профиль Windows: `rodio`
-- GitHub-аккаунт: `rodio`
-- GitHub-репозиторий памяти: `rodio/opencode-memory` (публичный)
+- GitHub-аккаунт: `magomettamaev500-cmyk`
+  (имя в профиле Windows и логин GitHub не совпадают — не путать)
+- GitHub-репозиторий памяти: `magomettamaev500-cmyk/opencode-memory`
+  (публичный, ветка `main`)
 
 ## Работа с OpenCode
 
