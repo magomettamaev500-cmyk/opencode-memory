@@ -47,6 +47,17 @@
 - `Get-Content -Raw -Encoding UTF8` читает UTF-8 без BOM корректно.
 - Chrome в системе не установлен.
 
+## Браузерная проверка (инструменты агента)
+
+- Встроенный Chromium сообщает `prefers-reduced-motion: reduce` — CSS-анимации
+  отключаются. Для проверки 3D-эффектов нужен статичный запасной ракурс.
+- `browser.tabs.open` не принимает `file://` — поднимать локальный HTTP-сервер.
+- `browser.screenshot` падает с «needs a visible tab», если окно не в фокусе —
+  сначала `browser.tabs.focus`, при неудаче открыть вкладку заново.
+- `location.hash = ...` из скрипта вызывает `hashchange` асинхронно: правки DOM,
+  сделанные сразу после, могут быть затёрты перерисовкой. Вызывать `App.route()`
+  явно.
+
 ## OpenCode
 
 - Глобальный конфиг: `C:\Users\rodio\.config\opencode\opencode.jsonc`.
