@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Синхронизирует локальный клон памяти с GitHub.
 
@@ -9,6 +9,7 @@
     При ошибке push скрипт завершается с ненулевым кодом.
 #>
 $ErrorActionPreference = 'Stop'
+try { [Console]::OutputEncoding = [Text.Encoding]::UTF8 } catch { }
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $repoRoot

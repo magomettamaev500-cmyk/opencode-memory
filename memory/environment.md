@@ -28,6 +28,25 @@
 - `chcp 65001` в PowerShell: без этого кириллица из внешних команд
   выводится как мусор.
 
+## Речевые голоса (TTS)
+
+- Синтез речи в системе: `Microsoft Irina` (ru-RU, жен.), `Microsoft Zira`
+  (en-US, жен.).
+- **Румынского/молдовского голоса нет** — ни в SAPI, ни в `Speech_OneCore`.
+- Установка (нужны права администратора):
+  `dism /online /add-capability /capabilityname:Language.Speech~~~ro-RO~`
+- В браузере доступен Web Speech API; Google Chrome несёт облачные
+  румынские голоса. `SpeechRecognition` работает только в Chrome/Edge на ПК.
+
+## PowerShell 5.1 — важные особенности
+
+- Кодовая страница консоли 866. Для читаемого русского вывода:
+  `[Console]::OutputEncoding = [Text.Encoding]::UTF8` в начале скрипта.
+- **`.ps1` с кириллицей обязан быть в UTF-8 с BOM** — без BOM PowerShell 5.1
+  читает файл как ANSI, и битые кавычки роняют разбор скрипта.
+- `Get-Content -Raw -Encoding UTF8` читает UTF-8 без BOM корректно.
+- Chrome в системе не установлен.
+
 ## OpenCode
 
 - Глобальный конфиг: `C:\Users\rodio\.config\opencode\opencode.jsonc`.
