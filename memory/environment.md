@@ -67,8 +67,32 @@
   - `repos/` — кэш клонированных `references` с Git-репозиториев.
   - `shell/` — состояние shell-сессий.
 - Пароль сервиса: `C:\Users\rodio\.config\opencode\service.json`.
-- Сервер: `http://127.0.0.1:4096`.
-- Модель в этой сессии: `opencode/minimax-m3.1-flash-free`.
+- Сервер: `http://127.0.0.1:<порт>`, порт меняется при старте — брать из
+  `opencode-cli.exe api get /api/info`.
+- Модель по умолчанию меняется (`opencode/big-pickle` на 2026-10-23); смотреть
+  в системном промпте или `opencode models`.
+- Приложение: OpenCode Desktop (`%LOCALAPPDATA%\Programs\@opencodedesktop`),
+  CLI в PATH нет — бинарник
+  `%APPDATA%\ai.opencode.desktop\cli\<версия>-x64\opencode-cli.exe`.
+- Версия на 2026-10-23: `2.1.2`.
+
+### Плагины и API
+
+- Глобальные плагины автозагружаются из `~/.config/opencode/plugins/*.ts`,
+  без записи в `plugins` конфига; правка файла перезагружает плагин на лету,
+  рестарт сервиса не нужен.
+- Память между сессиями: плагин `plugins/memory-link.ts`.
+  - Журнал: `~/.local/share/opencode/memory-link/sessions/*.json`,
+    отладка — `debug.log` рядом.
+  - Дайджест последних сессий добавляется в системный промпт на первом
+    запросе сессии.
+- `ctx.session.context` отдаёт сообщения с полем `type` =
+  `user | assistant | idle` и текстом в `content[].text`.
+- HTTP API: `opencode-cli.exe api <method> <path> -d '<json>'`.
+  Аутентификация — Basic `opencode:<пароль из service.json>`.
+  `POST /api/session` создаёт сессию, `POST /api/session/{id}/prompt`
+  с `"resume": false` принимает сообщение без запуска модели (удобно для
+  проверок без расхода токенов).
 
 ## Директории
 
@@ -76,7 +100,8 @@
   `C:\Users\rodio\OneDrive\Документы` — **не годится для git-репозиториев**
   (конфликты синхронизации). Рабочие клоны держать в `C:\Users\rodio\<имя>`.
 - Рабочий каталог текущей сессии:
-  `C:\Users\rodio\OneDrive\Документы\Проект по умолчанию` (пуст).
+  `C:\Users\rodio\OneDrive\Документы\Проект по умолчанию` — статичный сайт
+  (`index.html`, `css/`, `js/`, `tools/`, `dev-server.js`).
 
 ### Известные директории в профиле
 

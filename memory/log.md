@@ -71,3 +71,21 @@
 - Полная проверка: 26 маршрутов, 128 вопросов, консоль чистая.
 
 Детали — в `memory/projects/moldovan-course.md`.
+
+## 2026-10-23 — Связь сессий: плагин memory-link
+
+- Сделан глобальный плагин `~/.config/opencode/plugins/memory-link.ts`
+  (OpenCode 2.1.2). Автозагрузка из `plugins/`, перезагрузка без рестарта.
+- Пишет локальный журнал
+  `~/.local/share/opencode/memory-link/sessions/<sessionID>.json`:
+  заголовок, каталог, до 12 последних ходов (вопрос + краткий ответ).
+- На первом запросе новой сессии дайджест 6 последних сессий уходит в
+  системный промпт через хук `context`; журнал наполняется хуком `prompt`.
+- Сырые диалоги намеренно не попадают в git: журнал локальный, в репозиторий
+  пишется только выжимка (протокол в `AGENTS.md`).
+- Грабли V2: у сообщений `ctx.session.context` роль лежит в `type`
+  (`user/assistant/idle`), а не в `role`; каталог сессии —
+  `session.location.directory`.
+- API проверки: `opencode-cli.exe api`, Basic `opencode:<пароль>`,
+  `POST /api/session/{id}/prompt` с `resume:false` — приём сообщения без
+  запуска модели.
