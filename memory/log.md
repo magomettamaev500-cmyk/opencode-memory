@@ -89,3 +89,16 @@
 - API проверки: `opencode-cli.exe api`, Basic `opencode:<пароль>`,
   `POST /api/session/{id}/prompt` с `resume:false` — приём сообщения без
   запуска модели.
+
+## 2026-11-05 — аватарка Lastdance mods без генератора картинок
+
+- Генератора изображений в окружении нет; аватарка собрана как SVG-композиция
+  (шрифты Google Fonts + feTurbulence/feDisplacementMap), снята в PNG через
+  headless Edge.
+- Инструменты браузера в этой сессии пропали после рестарта сервера — рендер
+  делать через CLI: `msedge.exe --headless=new --screenshot=... --window-size=1080,1080`.
+- Рабочая папка в `%TEMP%\opencode` очищается при рестарте — исходники держать
+  в `C:\Users\rodio\lastdance-avatar`.
+- Итог: `Рабочий стол\аватарка\Lastdance-mods-avatar-{1080,640}.png`.
+- Выбор пользователя ещё не подтверждён: сделаны варианты (кисть Sedgwick,
+  Permanent Marker, Anton). Финальный — Anton со смещённой тенью.

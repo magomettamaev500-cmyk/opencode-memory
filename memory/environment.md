@@ -58,6 +58,22 @@
   сделанные сразу после, могут быть затёрты перерисовкой. Вызывать `App.route()`
   явно.
 
+## Рендер картинок без генератора
+
+- В системе **нет Chrome**, но есть Edge:
+  `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe` (156.x).
+- Headless-скриншот страницы ровно в пикселях:
+  `msedge --headless=new --disable-gpu --hide-scrollbars --window-size=1080,1080 --virtual-time-budget=5000 --screenshot=out.png URL`
+  (без `--virtual-time-budget` JS-анимации/шрифты могут не успеть).
+- Повторные запуски лучше с отдельным `--user-data-dir`, иначе бывает, что
+  файл не перезаписывается.
+- `PIL`/Pillow не установлены. Ресайз и размеры PNG — через
+  `Add-Type -AssemblyName System.Drawing` (пути в `FromFile`/`Save` только
+  абсолютные, иначе `FileNotFoundException`).
+- Шрифты Google Fonts качаются без ключа:
+  CSS `https://fonts.googleapis.com/css2?family=<Name>` → из него `.ttf`-ссылка,
+  если отдать User-Agent старый/IE — придёт TTF вместо woff2.
+
 ## OpenCode
 
 - Глобальный конфиг: `C:\Users\rodio\.config\opencode\opencode.jsonc`.
