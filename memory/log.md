@@ -102,3 +102,13 @@
 - Итог: `Рабочий стол\аватарка\Lastdance-mods-avatar-{1080,640}.png`.
 - Выбор пользователя ещё не подтверждён: сделаны варианты (кисть Sedgwick,
   Permanent Marker, Anton). Финальный — Anton со смещённой тенью.
+
+## 2026-11-09 — SendyTools.asi собран и выдан
+
+- ASI-плагин для GTA SA (SAMP R3/R4, RADMIR RP): авторизация ключом, счётчик
+  /pm-/ans, меню правил, логотип. Код в `C:\Users\rodio\SendyTools`.
+- MSVC поставить не удалось (сеть к CDN Microsoft рвётся, 3 попытки) —
+  переключились на MinGW-w64 i686 в `vendor\mingw32\`, собирается
+  `build_mingw.bat`. Детали — `memory/projects/sendytools.md` и environment.md.
+- Итог: `Рабочий стол\фыв\SendyTools.asi` (PE32, 1.9 МБ), SHA256
+  A0FA2E40...9067D. logo.h и правила — placeholder'ы по требованию пользователя.

@@ -18,6 +18,13 @@
 | git             | 2.55.0.windows.5      | `C:\Program Files\Git\cmd\git.exe`          |
 | gh (GitHub CLI) | 2.102.1               | `C:\Program Files\GitHub CLI\gh.exe`        |
 | winget          | —                     | `%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe` |
+| MinGW-w64 i686  | WinLibs GCC 16.2.0    | `C:\Users\rodio\SendyTools\vendor\mingw32\bin\g++.exe` |
+
+- **MSVC / VS Build Tools 2022 не установлены и не ставятся**: 3 попытки
+  (winget и bootstrapper) — обрывы сети до `download.visualstudio.microsoft.com`
+  (код 1 / 1602). Не пытаться снова без запроса пользователя. Для x86-сборок
+  использовать MinGW i686 из `vendor\mingw32\` (не путать с x86_64-алиасом
+  winget в PATH).
 
 - `git` и `gh` **не были** установлены в системе изначально — поставлены
   2026-10-21 через `winget`.
