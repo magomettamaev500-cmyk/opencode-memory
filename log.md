@@ -1,12 +1,14 @@
-## 2026-11-23 — финальная версия подгруз радара Radmir RP (исправлен install.bat, убрана кириллица)
+## 2026-11-23 — правильный Python-подгруз радара Radmir RP
 
 - Подгруз в C:\Users\rodio\OneDrive\Рабочий стол\мой подгруз
-- Структура как в HUDBUILDER: hud_image_0000.js + папки logo/, icons/, weapon/
-- hud_image_0000.js: команды /radarcolor <цвет> (CEF-меню цветов), /radar (CEF-меню формы миникарты), /logosize <w> <h>
-- Убрана команда /setlogo
+- Структура по принципу исходников source/ (Epilepsia Builder):
+  - build_radar.py — Python builder (собирает JS, вставляет картинки из папок в base64)
+  - radar_template.js — JS шаблон для CEF (команды /radarcolor, /radar)
+  - radar_mod.js — итоговый собранный скрипт (создаётся запуском build_radar.py)
+  - logo/, icons/, weapon/ — папки для своих PNG ресурсов
+  - readme.txt — инструкция
+- Команды: /radarcolor <цвет> (CEF-меню цветов без аргументов), /radar (CEF-меню формы миникарты)
 - Настройки в localStorage
-- install.bat переделан на английский (ASCII-only), больше не ломается из-за кириллицы
-- readme.txt на английском, добавлен раздел про .asi файлы
-- .asi файлы — скомпилированные бинарники, создаются через ASICPP.exe из папки ASI BUILDER.
-  Нельзя создать текстовым редактором. Нужно использовать существующие .asi из HUDBUILDER или компилировать через ASICPP.exe.
-- Исходники подгруза (source, сборки\подгроуз\Создание) не изменены
+- Стиль по принципу исходников CEF (podozdat, podklyuchitKomanduChata, loaderModule.notification, addDialogInQueue, razobratOtvetDialoga)
+- Нет батника, нет готовых hud .js/.asi файлов (не трогаются исходные худы)
+- Исходники подгруз (source, сборки\подгроуз\Создание) не изменены
