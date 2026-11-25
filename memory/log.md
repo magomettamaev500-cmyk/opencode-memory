@@ -112,3 +112,13 @@
   `build_mingw.bat`. Детали — `memory/projects/sendytools.md` и environment.md.
 - Итог: `Рабочий стол\фыв\SendyTools.asi` (PE32, 1.9 МБ), SHA256
   A0FA2E40...9067D. logo.h и правила — placeholder'ы по требованию пользователя.
+
+## 2026-11-25 — Radar HUD подгруз для Radmir RP
+
+- Собран подгруз `/radarcolor` и `/radar`: Lua/MoonLoader (основной) +
+  опциональный CEF-модуль. Файлы — `Рабочий стол\подгруз ии`.
+- HUD Radmir — CEF/JS, поэтому Lua рисует рамку поверх миникарты, а CEF-модуль
+  меняет CSS `#app .hud-radmir-radar__map`.
+- Конфиг `moonloader\config\radar_hud.ini` с автосохранением; команды
+  `sampRegisterChatCommand`, уведомления `sampAddChatMessage`.
+- Детали — `memory/projects/radmir-radar-hud.md`.
